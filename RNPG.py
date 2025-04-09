@@ -9,8 +9,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
 import pickle
-from KL_uncertainity_evaluator import Robust_pol_Kl_uncertainity
-import time
+
 
 class TabularPolicy(nn.Module):
     def __init__(self, n_states, n_actions):
@@ -75,5 +74,6 @@ class RNPG:
             pol = self.get_pol()
             J,J_grad = self.find_choice(pol)
             F = self.compute_fisher()
-            self.theta = 1/self.lambda_*(self.theta - 0.5*np.matmul(np.linalg.pinv(F),J_grad))
+            
+            #self.theta = 1/self.lambda_*(self.theta - 0.5*np.matmul(np.linalg.pinv(F),J_grad))
             

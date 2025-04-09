@@ -23,7 +23,7 @@ class Robust_pol_Kl_uncertainity:
         tau = 1000
         s = np.random.choice(self.nS,p=self.init_dist)
         for t in range(tau):
-            #print(policy[s])
+            print(policy[s])
             a = np.random.choice(self.nA,p = policy[s])
             next_state = np.random.choice(self.nS,p=P[a,s,:])
             #print("t=",self.t,a,s)
